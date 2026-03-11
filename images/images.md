@@ -1,5 +1,13 @@
 # 📁 The `images/` Folder
 
+![alt text](Hunger-Action-Heroes-Volunteer-Shift_7.27.24-35.jpg)
+
+![alt text](download.jpg)
+
+![alt text](Chess_pieces_close_up.jpg)
+
+
+
 This folder is where you should store **all image files** used in your website. Keeping all images in one place helps keep your project organized and makes it easier to reference them in your HTML and CSS files.
 
 ---
