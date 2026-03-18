@@ -8,8 +8,89 @@ h1, h2 {
 
 p {
     margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+#container {
+    width: 95%;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
 }
 
 img {
-    margin-bottom: 1rem;
+    margin-top: 0.5cm;
+    margin-bottom: 2cm;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
+
+.bold {
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.highlight {
+    background-color: #fffde7;
+    border-left: 4px solid #ffd54f;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    color: #333;
+}
+
+.underline {
+    text-decoration: none;
+    border-bottom: 2px solid #4a90e2;
+    padding-bottom: 0.1rem;
+}
+
+.line-spacing {
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+}
+
+a {
+    color: #1a73e8;
+}
+
+a:hover {
+    color: #0b4f97;
+    text-decoration: underline;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.sidebar {
+    float: right;
+    width: 280px;
+    margin-left: 1rem;
+    padding: 1rem;
+    background: #f1f7ff;
+    border: 1px solid #cbdcf9;
+}
+
+@media (max-width: 900px) {
+    #container {
+        width: 95%;
+    }
+    .sidebar {
+        float: none;
+        width: auto;
+        display: none;
+    }
+}
+
+@media (min-width: 1100px) {
+    #container {
+        width: 1100px;
+    }
+}
+
