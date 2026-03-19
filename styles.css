@@ -30,8 +30,12 @@ body {
     line-height: 1.75;
     margin: 0;
     padding: 0 0 2rem 0;
-    overflow-x: auto;
+    overflow-x: hidden;
     animation: blueShift 30s ease-in-out infinite;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 /* ============================================
@@ -96,22 +100,48 @@ p {
 p:last-child { margin-bottom: 0; }
 
 a {
-    color: #1565c0;
     text-decoration: none;
     font-weight: 600;
     transition: color 0.2s ease;
 }
 
-a:hover {
-    color: #0d47a1;
+a:link {
+    color: #1565c0;
+}
+
+a:visited {
+    color: #1565c0;
+}
+
+a.temporary-visited {
+    color: #7a4f2a;
+}
+
+a:hover,
+a:focus-visible {
     text-decoration: underline;
+}
+
+a:link:hover,
+a:link:focus-visible {
+    color: #0d47a1;
+}
+
+a:visited:hover,
+a:visited:focus-visible {
+    color: #0d47a1;
+}
+
+a.temporary-visited:hover,
+a.temporary-visited:focus-visible {
+    color: #7a4f2a;
 }
 
 /* ============================================
    CONTAINER CARDS
 ============================================ */
 .container {
-    max-width: 860px;
+    width: 900px;
     margin: 0 auto 1.75rem auto;
     padding: 2rem 2.5rem;
     background-color: #ffffff;
@@ -147,6 +177,10 @@ blockquote.highlight, p.highlight {
     letter-spacing: 0.003em;
 }
 
+.clear-floats {
+    clear: both;
+}
+
 /* ============================================
    SIDEBAR
 ============================================ */
@@ -162,6 +196,12 @@ blockquote.highlight, p.highlight {
 }
 
 .sidebar p { font-size: 0.9rem; }
+
+.hobbies-tennis-link {
+    float: right;
+    width: 280px;
+    margin: 0 0 1rem 1.5rem;
+}
 
 .tennis-side-row {
     display: flex;
@@ -182,6 +222,13 @@ blockquote.highlight, p.highlight {
     display: block;
 }
 
+.hobbies-tennis-link img,
+.photo-link-card img,
+.summer-link-card img {
+    width: 100%;
+    height: auto;
+}
+
 .photo-link-card,
 .summer-link-card,
 .instagram-link-card {
@@ -192,12 +239,21 @@ blockquote.highlight, p.highlight {
     display: block;
     width: 260px;
     flex: 0 0 260px;
-    margin-bottom: 0 !important;
 }
 
-.photo-link-card,
+.summer-link-card {
+    float: right;
+    margin: 0 0 1rem 1.5rem;
+}
+
 .summer-link-card {
     margin-bottom: 1.4rem !important;
+}
+
+.casa-image {
+    width: 220px;
+    float: right;
+    margin: 0 0 1rem 1.5rem;
 }
 
 .instagram-link-card img {
@@ -286,18 +342,50 @@ footer {
 
 footer p { margin: 0; color: #546e7a; }
 
+.back-to-top {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 80;
+    border: none;
+    border-radius: 999px;
+    padding: 0.6rem 0.95rem;
+    background: #1565c0;
+    color: #ffffff;
+    font-size: 0.84rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(13, 71, 161, 0.28);
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+}
+
+.back-to-top:hover,
+.back-to-top:focus-visible {
+    background: #0d47a1;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
 /* ============================================
    RESPONSIVE
 ============================================ */
 @media (max-width: 1200px) {
     .container {
-        max-width: 92%;
+        width: 840px;
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 992px) {
     .container {
-        max-width: 95%;
+        width: 95%;
         padding: 1.5rem;
     }
     .sidebar {
@@ -319,6 +407,23 @@ footer p { margin: 0; color: #546e7a; }
         flex: none;
         margin: 0 0 0.75rem 0;
     }
+    .photo-link-card .image-caption {
+        top: 100%;
+        left: 0;
+        width: 100%;
+        max-width: none;
+        margin-top: 0.2rem;
+        text-align: center;
+        white-space: normal;
+        transform: translateY(-3px);
+    }
+    .photo-link-card:hover .image-caption,
+    .photo-link-card:focus-visible .image-caption {
+        transform: translateY(0);
+    }
+    .hobbies-tennis-link,
+    .summer-link-card,
+    .casa-image,
     .instagram-link-card {
         position: static;
         transform: none;
@@ -327,14 +432,21 @@ footer p { margin: 0; color: #546e7a; }
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .hero { padding: 2.2rem 1rem 2rem; }
     .hero h1 { font-size: 2rem; }
     .hero p { font-size: 0.95rem; }
-    .container { padding: 1.2rem 1rem; }
+    .container {
+        width: 95%;
+        padding: 1.2rem 1rem;
+    }
     h2 { font-size: 1.25rem; }
     p { font-size: 0.95rem; }
-    img[style] { width: 100% !important; float: none !important; margin: 0 0 1rem 0 !important; }
-    a[style] { float: none !important; margin: 0 0 1rem 0 !important; }
+    .back-to-top {
+        right: 0.75rem;
+        bottom: 0.75rem;
+        padding: 0.5rem 0.78rem;
+        font-size: 0.76rem;
+    }
 }
 
