@@ -1,3 +1,7 @@
+:root {
+     --global-scale: 1;
+ }
+
 /* ============================================
    ANIMATIONS
 ============================================ */
@@ -36,6 +40,11 @@ body {
 
 html {
     scroll-behavior: smooth;
+    font-size: calc(16px * var(--global-scale));
+}
+
+html.compact-mode {
+    --global-scale: 0.9;
 }
 
 /* ============================================
@@ -141,7 +150,7 @@ a.temporary-visited:focus-visible {
    CONTAINER CARDS
 ============================================ */
 .container {
-    width: 900px;
+    width: min(calc(900px * var(--global-scale)), 95vw);
     margin: 0 auto 1.75rem auto;
     padding: 2rem 2.5rem;
     background-color: #ffffff;
@@ -186,7 +195,7 @@ blockquote.highlight, p.highlight {
 ============================================ */
 .sidebar {
     float: right;
-    width: 230px;
+    width: calc(230px * var(--global-scale));
     margin: 0 0 1rem 1.5rem;
     padding: 1rem 1.2rem;
     background: linear-gradient(160deg, #e3f2fd 0%, #e8f5fe 100%);
@@ -199,7 +208,7 @@ blockquote.highlight, p.highlight {
 
 .hobbies-tennis-link {
     float: right;
-    width: 280px;
+    width: calc(280px * var(--global-scale));
     margin: 0 0 1rem 1.5rem;
 }
 
@@ -218,7 +227,7 @@ blockquote.highlight, p.highlight {
 }
 
 .instagram-link-card {
-    width: 300px;
+    width: calc(300px * var(--global-scale));
     display: block;
 }
 
@@ -237,8 +246,8 @@ blockquote.highlight, p.highlight {
 
 .photo-link-card {
     display: block;
-    width: 260px;
-    flex: 0 0 260px;
+    width: calc(260px * var(--global-scale));
+    flex: 0 0 calc(260px * var(--global-scale));
 }
 
 .summer-link-card {
@@ -251,7 +260,7 @@ blockquote.highlight, p.highlight {
 }
 
 .casa-image {
-    width: 220px;
+    width: calc(220px * var(--global-scale));
     float: right;
     margin: 0 0 1rem 1.5rem;
 }
@@ -379,8 +388,23 @@ footer p { margin: 0; color: #546e7a; }
 ============================================ */
 @media (max-width: 1200px) {
     .container {
-        width: 840px;
+        width: min(calc(840px * var(--global-scale)), 95vw);
     }
+}
+
+html.compact-mode .hero {
+    padding: 2.8rem 1.3rem 2.3rem;
+}
+
+html.compact-mode .container {
+    padding: 1.6rem 1.5rem;
+}
+
+html.compact-mode .back-to-top {
+    right: 0.75rem;
+    bottom: 0.75rem;
+    padding: 0.52rem 0.8rem;
+    font-size: 0.75rem;
 }
 
 @media (max-width: 992px) {

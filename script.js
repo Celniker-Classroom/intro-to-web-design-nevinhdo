@@ -4,6 +4,30 @@ document.querySelectorAll('a[href]').forEach((link) => {
     });
 });
 
+const rootElement = document.documentElement;
+const compactWidthQuery = window.matchMedia('(max-width: 1024px)');
+
+const isMobileDevice = () => {
+    const userAgent = navigator.userAgent || '';
+    const coarsePointer = window.matchMedia('(pointer: coarse)').matches;
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent) || coarsePointer;
+};
+
+const applyCompactMode = () => {
+    const shouldScaleDown = compactWidthQuery.matches || isMobileDevice();
+    rootElement.classList.toggle('compact-mode', shouldScaleDown);
+};
+
+applyCompactMode();
+
+if (typeof compactWidthQuery.addEventListener === 'function') {
+    compactWidthQuery.addEventListener('change', applyCompactMode);
+} else if (typeof compactWidthQuery.addListener === 'function') {
+    compactWidthQuery.addListener(applyCompactMode);
+}
+
+window.addEventListener('resize', applyCompactMode);
+
 const backToTopBtn = document.getElementById('backToTop');
 
 const toggleBackToTop = () => {
